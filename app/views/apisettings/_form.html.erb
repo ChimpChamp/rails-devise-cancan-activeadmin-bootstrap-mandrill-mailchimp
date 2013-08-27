@@ -1,0 +1,51 @@
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#get-list').click(function (e) {
+            e.preventDefault();
+            var keyVal = $("#apisetting_api_key").val();
+            var origin = window.location.origin;
+            window.location.href = origin + '/apisettings/load_list?key=' + keyVal;
+        });
+    });
+</script>
+
+<%= form_for @apisetting, :html => {:class => 'form-horizontal'} do |f| %>
+    <div class="controls">
+      <%= f.label :api_key %>
+      <% if @api_key.present? %>
+        <%= f.text_field :api_key, :value=>@api_key %>
+      <% else %>
+          <%= f.text_field :api_key %>
+    <% end %>
+        <%= link_to "getlist", "javascript:void(0)", :class=>"btn btn-mini btn-primary", :id=>"get-list" %>
+    </div>
+
+    <div class="control-group">
+
+      <div class="controls">
+        <% if @listloaded %>
+            <label>Select List</label>
+            <%= f.select :list, [['Select List', '']].concat(@listloaded.inject([]) {|arr, e| arr <<  [e["name"],e["id"]]}) %>
+        <%end%>
+      </div>
+    </div>
+
+    <div class="form-actions">
+      <%= f.submit :submit, :class => 'btn btn-primary', :value => "Submit" %>
+      <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                  apisettings_path, :class => 'btn' %>
+    </div>
+
+
+<% end %>
+<%= form_for @apisetting, :html => {:class => 'form-horizontal'} do |f| %>
+  <h3><%= "Mandrill API" %></h3>
+    <div class="controls">
+      <%= f.label :api_key %>
+
+      <%= f.text_field :api_key %>
+      <%= link_to "getlist", "#", :class=>"btn btn-mini btn-primary" %>
+    </div>
+
+
+<% end %>

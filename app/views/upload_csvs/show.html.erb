@@ -1,0 +1,39 @@
+<%- model_class = UploadCsv -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.titleize %></h1>
+</div>
+
+<dl class="dl-horizontal">
+  <dt><strong><%= model_class.human_attribute_name(:mclist_id) %>:</strong></dt>
+  <dd><%= @upload_csv.mclist_id %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:date_added) %>:</strong></dt>
+  <dd><%= @upload_csv.date_added %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:follow_up) %>:</strong></dt>
+  <dd><%= @upload_csv.follow_up %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:clicked_link_date) %>:</strong></dt>
+  <dd><%= @upload_csv.clicked_link_date %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:pdf_url) %>:</strong></dt>
+  <dd><%= @upload_csv.pdf_url %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:message_sent) %>:</strong></dt>
+  <dd><%= @upload_csv.message_sent %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:last_message_name) %>:</strong></dt>
+  <dd><%= @upload_csv.last_message_name %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:last_send_date) %>:</strong></dt>
+  <dd><%= @upload_csv.last_send_date %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:remove_date) %>:</strong></dt>
+  <dd><%= @upload_csv.remove_date %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:remove_user) %>:</strong></dt>
+  <dd><%= @upload_csv.remove_user %></dd>
+</dl>
+
+<div class="form-actions">
+  <%= link_to t('.back', :default => t("helpers.links.back")),
+              upload_csvs_path, :class => 'btn'  %>
+  <%= link_to t('.edit', :default => t("helpers.links.edit")),
+              edit_upload_csv_path(@upload_csv), :class => 'btn' %>
+  <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+              upload_csv_path(@upload_csv),
+              :method => 'delete',
+              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+              :class => 'btn btn-danger' %>
+</div>

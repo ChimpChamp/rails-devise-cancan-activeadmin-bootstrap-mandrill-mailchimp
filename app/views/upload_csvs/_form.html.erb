@@ -1,0 +1,17 @@
+<%= simple_form_for @upload_csv, :html => { :class => 'form-horizontal' } do |f| %>
+  <%= f.input :mclist_id %>
+  <%= f.input :date_added %>
+  <%= f.input :follow_up %>
+  <%= f.input :clicked_link_date %>
+  <%= f.input :pdf_url %>
+  <%= f.input :message_sent %>
+  <%= f.input :last_message_name %>
+  <%= f.input :last_send_date %>
+  <%= f.input :remove_date %>
+  <%= f.input :remove_user %>
+  <div class="form-actions">
+    <%= f.button :submit, :class => 'btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                upload_csvs_path, :class => 'btn' %>
+  </div>
+<% end %>
